@@ -4,15 +4,11 @@
 This project builds an **LSTM-based deep learning model** to forecast **PM2.5 air pollutant concentration** using time-series data.  
 The workflow includes **data preprocessing, feature engineering, sequence creation, model design, hyperparameter experiments, and final model training with callbacks**.  
 
----
-
 ## Dataset  
 - **Train set (`train.csv`)** → contains features and target (`pm2.5`).  
 - **Test set (`test.csv`)** → contains only features (no target).  
 - Features include meteorological variables and station readings.  
 - Target: **PM2.5 concentration**.  
-
----
 
 ## Preprocessing  
 1. **Datetime conversion** → `datetime` column converted to proper datetime format.  
@@ -20,8 +16,6 @@ The workflow includes **data preprocessing, feature engineering, sequence creati
 3. **Missing values** → handled with mean imputation and time interpolation.  
 4. **Feature/target split** → `X_train`, `y_train` from training set; `X_test` from test set.  
 5. **Sequence creation** → converted into sequences of 24 time steps for LSTM input.  
-
----
 
 ## Model Architectures  
 We experimented with multiple LSTM designs:  
@@ -32,8 +26,6 @@ We experimented with multiple LSTM designs:
    - `LSTM(32, return_sequences=True)` → `BatchNorm` → `Dropout(0.03)`  
    - `LSTM(16)` → `BatchNorm` → `Dropout(0.03)`  
    - `Dense(1)`  
-
----
 
 ## Experiments  
 - Conducted **15 experiments** varying:  
@@ -66,8 +58,6 @@ We experimented with multiple LSTM designs:
 
  **Best model**: Exp11 (Batch size 16, Adam optimizer, 2 LSTMs).  
 
----
-
 ## Training Strategy  
 - **Optimizer**: Adam (lr=0.001, gradient clipping).  
 - **Loss**: MSE.  
@@ -78,14 +68,10 @@ We experimented with multiple LSTM designs:
   - ReduceLROnPlateau (dynamic LR scheduling)  
   - TensorBoard (training monitoring)  
 
----
-
 ## Evaluation  
 - Training loss curve plotted.  
 - Best model selected by lowest validation RMSE.  
 - Predictions generated on test set (no ground truth available).  
-
----
 
 ##  Next Steps  
 - Train for longer (50–100 epochs) with early stopping.  
