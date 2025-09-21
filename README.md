@@ -5,17 +5,17 @@ This project builds an **LSTM-based deep learning model** to forecast **PM2.5 ai
 The workflow includes **data preprocessing, feature engineering, sequence creation, model design, hyperparameter experiments, and final model training with callbacks**.  
 
 ## Dataset  
-- **Train set (`train.csv`)** → contains features and target (`pm2.5`).  
-- **Test set (`test.csv`)** → contains only features (no target).  
+- **Train set (`train.csv`)** - contains features and target (`pm2.5`).  
+- **Test set (`test.csv`)** - contains only features (no target).  
 - Features include meteorological variables and station readings.  
 - Target: **PM2.5 concentration**.  
 
 ## Preprocessing  
-1. **Datetime conversion** → `datetime` column converted to proper datetime format.  
-2. **Set index** → `datetime` used as index for time-series handling.  
-3. **Missing values** → handled with mean imputation and time interpolation.  
-4. **Feature/target split** → `X_train`, `y_train` from training set; `X_test` from test set.  
-5. **Sequence creation** → converted into sequences of 24 time steps for LSTM input.  
+1. **Datetime conversion** - `datetime` column converted to proper datetime format.  
+2. **Set index** - `datetime` used as index for time-series handling.  
+3. **Missing values** - handled with mean imputation and time interpolation.  
+4. **Feature/target split** - `X_train`, `y_train` from training set; `X_test` from test set.  
+5. **Sequence creation** - converted into sequences of 24 time steps for LSTM input.  
 
 ## Model Architectures  
 We experimented with multiple LSTM designs:  
@@ -23,8 +23,8 @@ We experimented with multiple LSTM designs:
 2. **Stacked LSTM** (two LSTMs + dropout).  
 3. **Shallow/Deep variants** with different units, dropout, and optimizers.  
 4. **Final refined model**:  
-   - `LSTM(32, return_sequences=True)` → `BatchNorm` → `Dropout(0.03)`  
-   - `LSTM(16)` → `BatchNorm` → `Dropout(0.03)`  
+   - `LSTM(32, return_sequences=True)` - `BatchNorm` - `Dropout(0.03)`  
+   - `LSTM(16)` - `BatchNorm` - `Dropout(0.03)`  
    - `Dense(1)`  
 
 ## Experiments  
